@@ -1,9 +1,7 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useEffect, useState} from "react";
 import { useAllProductData} from "../queryHooks/useAllProducts";
 
-
-export const StoreContext = createContext(null);
-
+export const StoreContext = createContext();
 
 const defaultCart = () => {
     const cart = {};
@@ -15,35 +13,28 @@ const defaultCart = () => {
 defaultCart();
 
 export const StoreContextProvider = (props) => {
-    const {data:allStoreProducts} = useAllProductData();
-    const [allProducts, setAllProducts] = useState([]);
-    const [productsFromLS, setProductsFromLS] =useState([]);
-    
+    const [allProduct, setAllProducts] = useState([]);
     const [cartItems, setCartItems] = useState(defaultCart());
-    
-    const storeAllProductsToStorage = () => {
-        if(allProducts.length === 0 && allStoreProducts !== undefined) {
-            setAllProducts(allStoreProducts);
-        };
-
-        // save to local storage
-        if(localStorage.getItem('netcommerceproducts') === null) {
-            localStorage.setItem('netcommerceproducts', []);
-        };
-
-        localStorage.setItem('netcommerceproducts', JSON.stringify(allProducts));
-
+   
+    const onSuccess = (data) => {
+        setAllProducts(data);
     };
-    storeAllProductsToStorage();
 
+    useAllProductData(onSuccess);
+    console.log(allProduct);
 
     useEffect(() => {
-        const allProductsFromLocalStorage = JSON.parse(localStorage.getItem('netcommerceproducts'));
-        if(allProductsFromLocalStorage.length > 0) {
-            setProductsFromLS(allProductsFromLocalStorage);
+        const storedData = JSON.parse(localStorage.getItem('netcommerceproducts'));
+        if(storedData) {
+            setAllProducts(storedData);
         };
-      }, [allProducts]);
+    }, []);
 
+    useEffect(() => {
+        // alert('There are data now');
+        localStorage.setItem('netcommerceproducts', JSON.stringify(allProduct));
+    }, [allProduct]);
+  
 
     const addToCart = (id) => {
         setCartItems((prev) => {
@@ -51,9 +42,18 @@ export const StoreContextProvider = (props) => {
         });
     }; 
 
+    const findTotalCartCost = () => {
+        let totalAmount = 0;
+        for (const item in cartItems) {
+            if(cartItems[item] > 0) {
+                let itemInfo = allProduct.find((product) => product.id === Number(item));
+                totalAmount += cartItems[item] * itemInfo.price;
+            };
+        };
+        return totalAmount;
+    };
 
-
-    const storeContextValue = {productsFromLS, cartItems, addToCart};
+    const storeContextValue = {allProduct, cartItems, addToCart, findTotalCartCost};
 
     return <StoreContext.Provider value={storeContextValue}>{props.children}</StoreContext.Provider>;
 }; 
