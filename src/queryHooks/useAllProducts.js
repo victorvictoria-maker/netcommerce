@@ -1,7 +1,7 @@
 import Axios from "axios";
 import { useQuery } from "react-query";
 
-export const useAllProductData = (onSuccess) => {
+export const useAllProductData = () => {
     const getAllProducts = () => {
         return Axios.get('https://dummyjson.com/products').then((res) => {
             // console.log(res.data);
@@ -10,7 +10,7 @@ export const useAllProductData = (onSuccess) => {
     };
 
     return useQuery(['all-products-query'], getAllProducts, {
-        onSuccess,
+        // onSuccess,
         // refetchOnWindowFocus: false
     });
 };
