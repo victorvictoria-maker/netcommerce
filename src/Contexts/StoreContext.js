@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 import { useAllProductData} from "../queryHooks/useAllProducts";
 
 
@@ -17,15 +17,32 @@ defaultCart();
 export const StoreContextProvider = (props) => {
     const {data:allStoreProducts} = useAllProductData();
     const [allProducts, setAllProducts] = useState([]);
+    const [productsFromLS, setProductsFromLS] =useState([]);
     
     const [cartItems, setCartItems] = useState(defaultCart());
     
-    const getAllProducts = () => {
+    const storeAllProductsToStorage = () => {
         if(allProducts.length === 0 && allStoreProducts !== undefined) {
             setAllProducts(allStoreProducts);
         };
+
+        // save to local storage
+        if(localStorage.getItem('netcommerceproducts') === null) {
+            localStorage.setItem('netcommerceproducts', []);
+        };
+
+        localStorage.setItem('netcommerceproducts', JSON.stringify(allProducts));
+
     };
-    getAllProducts();
+    storeAllProductsToStorage();
+
+
+    useEffect(() => {
+        const allProductsFromLocalStorage = JSON.parse(localStorage.getItem('netcommerceproducts'));
+        if(allProductsFromLocalStorage.length > 0) {
+            setProductsFromLS(allProductsFromLocalStorage);
+        };
+      }, [allProducts]);
 
 
     const addToCart = (id) => {
@@ -36,7 +53,7 @@ export const StoreContextProvider = (props) => {
 
 
 
-    const storeContextValue = {allProducts, cartItems, addToCart};
+    const storeContextValue = {productsFromLS, cartItems, addToCart};
 
     return <StoreContext.Provider value={storeContextValue}>{props.children}</StoreContext.Provider>;
 }; 
