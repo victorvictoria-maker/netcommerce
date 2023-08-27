@@ -12,6 +12,7 @@ const getAllProducts = () => {
 export const useAllProductData = (onSuccess) => {
     return useQuery(['all-products-query'], getAllProducts, {
         onSuccess,
-        // refetchOnWindowFocus: false
+        refetchOnWindowFocus: false,
+        refetchOnMount: false,
     });
 };

@@ -5,7 +5,9 @@ import { EachCartItem } from './EachCartItem.jsx';
 export const Cart = () => {
 
     const { allProduct, cartItems, findTotalCartCost } = useContext(StoreContext);
+    // , findTotalCartCost
     let totalCartAmount = findTotalCartCost();
+    // let totalCartAmount = 0;
     // console.log(productsFromLS, cartItems);
 
   return (

@@ -10,6 +10,7 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import { EachProductDetails } from "./Pages/EachProductDetails";
 import { ProductsLayout } from "./Layouts/ProductsLayout";
 import { Cart } from "./Pages/Cart";
+import { Admin } from "./Pages/Admin/Admin";
 
 const queryClient = new QueryClient();
 
@@ -27,6 +28,7 @@ const router = createBrowserRouter(
       <Route path="about" element={<About/>}/>
       <Route path="contact" element={<Contact/>}/>
       <Route path="cart" element={<Cart/>}/>
+      <Route path="admin" element={<Admin/>}/>
       <Route path="*" element={<NotFound/>}/>
     </Route>
   )

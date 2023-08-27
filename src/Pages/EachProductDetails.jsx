@@ -8,7 +8,6 @@ export const EachProductDetails = () => {
 
   const {id} = useParams();
   const {data:thisProduct} = useGetEachProductDetails(parseInt(id));
-  // console.log(thisProduct);
 
   const { addToCart } = useContext(StoreContext);
 

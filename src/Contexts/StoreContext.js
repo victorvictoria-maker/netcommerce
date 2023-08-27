@@ -4,36 +4,73 @@ import { useAllProductData} from "../queryHooks/useAllProducts";
 export const StoreContext = createContext();
 
 const defaultCart = () => {
-    const cart = {};
-    for (let index = 1; index <= 30; index++) {
-        cart[index] = 0; 
+    const storedCart = JSON.parse(localStorage.getItem("netcommercecart"));
+    if(storedCart) {
+        return storedCart;
+    } else {
+        const cart = {};
+        for (let index = 1; index <= 30; index++) {
+            cart[index] = 0; 
+        };
+        return cart;
     };
-    return cart;
 };
-defaultCart();
+
+// defaultCart();
 
 export const StoreContextProvider = (props) => {
     const [allProduct, setAllProducts] = useState([]);
-    const [cartItems, setCartItems] = useState(defaultCart());
-   
+    const [cartItems, setCartItems] = useState(defaultCart);
+
     const onSuccess = (data) => {
+        // const storedData = JSON.parse(localStorage.getItem('netcommerceproducts'));
+        // if(storedData.length > 0) {
+        //     setAllProducts(storedData);
+        // } else {
+        //     setAllProducts(data);
+        // };
         setAllProducts(data);
     };
 
     useAllProductData(onSuccess);
-    console.log(allProduct);
+    // console.log(allProduct);
 
     useEffect(() => {
-        const storedData = JSON.parse(localStorage.getItem('netcommerceproducts'));
-        if(storedData) {
-            setAllProducts(storedData);
+        setAllProducts(allProduct);
+    }, [allProduct]);
+
+    useEffect(() => {
+        const storedCart = JSON.parse(localStorage.getItem("netcommercecart"));
+        if (storedCart) {
+            setCartItems(storedCart);
         };
     }, []);
 
-    useEffect(() => {
-        // alert('There are data now');
-        localStorage.setItem('netcommerceproducts', JSON.stringify(allProduct));
-    }, [allProduct]);
+    useEffect(() => {   
+        localStorage.setItem('netcommercecart', JSON.stringify(cartItems));
+    }, [cartItems]);
+
+
+
+    // useEffect(() => {
+    //     const storedData = localStorage.getItem('netcommerceproducts');
+    //     if(storedData) {
+    //         console.log('db');
+    //         // setAllProducts(JSON.parse(storedData));
+    //     //     return;
+    //     };
+    //     console.log('hi');
+    //     localStorage.setItem('netcommerceproducts', JSON.stringify(allProduct));
+    // }, [allProduct]);
+
+    // useEffect(() => {
+    //     const storedData = JSON.parse(localStorage.getItem('netcommerceproducts'));
+    //     if(storedData) {
+    //         setAllProducts(storedData);
+    //     };
+    //     // console.log(storedData);
+    //     // console.log(allProduct);
+    // }, []);
   
 
     const addToCart = (id) => {
@@ -46,14 +83,36 @@ export const StoreContextProvider = (props) => {
         let totalAmount = 0;
         for (const item in cartItems) {
             if(cartItems[item] > 0) {
+                // console.log(cartItems[item]);
                 let itemInfo = allProduct.find((product) => product.id === Number(item));
-                totalAmount += cartItems[item] * itemInfo.price;
+                // console.log(itemInfo?.price);
+        //         // console.log(itemInfo.price);
+                totalAmount += cartItems[item] * itemInfo?.price;
             };
         };
+        // return totalAmount;
         return totalAmount;
     };
+    // console.log(cartItems);
 
-    const storeContextValue = {allProduct, cartItems, addToCart, findTotalCartCost};
+    const removeFromCart = (productId) => {
+        console.log(productId);
+        setCartItems((prev) => {
+            return {...prev, [productId]: 0};
+        }); 
+    };
 
-    return <StoreContext.Provider value={storeContextValue}>{props.children}</StoreContext.Provider>;
+    const storeContextValue = {
+        allProduct, 
+        cartItems, 
+        addToCart, 
+        findTotalCartCost, 
+        removeFromCart
+    };
+
+    return  <StoreContext.Provider value={storeContextValue}>
+                {props.children}
+            </StoreContext.Provider>;
 }; 
+
+
