@@ -4,8 +4,11 @@ import { useQuery } from "react-query";
 // import { StoreContext } from '../Contexts/StoreContext.js';
 
 const getAllProducts = () => {
-    return Axios.get('https://dummyjson.com/products').then((res) => {
-        return res.data.products; 
+    return Axios.get('https://fakestoreapi.com/products').then((res) => {
+        // https://dummyjson.com/products
+        // return res.data.products;
+        // console.log(res.data);
+        return res.data; 
     });
 };
 

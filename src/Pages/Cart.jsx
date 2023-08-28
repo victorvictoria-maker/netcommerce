@@ -27,6 +27,7 @@ export const Cart = () => {
         })}
         </div>
         <div className="row bg-success">
+            {totalCartAmount}
             {totalCartAmount > 0 ? <p>Total: ${totalCartAmount}</p> : <p>Your cart is empty</p>} 
         </div>
     </div>

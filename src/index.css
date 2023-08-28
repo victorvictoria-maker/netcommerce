@@ -15,14 +15,19 @@ code {
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 
 :root {
-  --primary: rgb(123, 8, 123);
-  --secondary: #2b3452;
+  --primary: #cc2936;
+  --secondary: #6667ab;
+  --neutral: #f5f0f6;
+  --white: #ffffff;
+  --black: #000000
 }
 
 body {
   margin: 0;
-  padding: 0 20px;
+  padding: 0;
   font-family: 'Poppins';
+  text-decoration: none;
+  /* background-color: var(--neutral); */
   /* background: var(--secondary); */
 }
 
@@ -31,7 +36,92 @@ body {
   margin: 0;
 }
 
+/* Navbar jsx */
+.navbar {
+  background-color: var(--neutral) !important;
+  border-bottom: 2px solid var(--white);
+  margin-bottom: 70px;
+  /* list-style-type: disc; */
+};
+
+/* .brand-name {
+  color: var(--secondary);
+  background-color: red;
+} */
+
+.nav-item {
+  height: 35px;
+}
+
+.nav-link {
+  color: var(--black);
+  padding-bottom: 0;
+}
+
 
 .nav-item a.active {
-  background: var(--primary);
+  color: var(--primary) !important;
+  border-bottom: 2px solid var(--primary);
+}
+
+.cart {
+  color: var(--secondary);
+}
+
+
+/* Shop jsx */
+.each-product {
+  border: 1px solid white;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, var(--neutral) 0px 0px 0px 3px;
+  border-radius: 10px;
+}
+
+.each-product:hover {
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, var(--primary) 0px 0px 0px 3px;
+}
+
+.each-product p {
+  text-decoration: none;
+}
+
+.each-product .category {
+  color: #bbb;
+  text-transform: uppercase;
+}
+
+.each-product .title {
+  color: var(--black);
+  font-weight: 700;
+}
+
+.each-product .price {
+  color: var(--secondary);
+  font-weight: 700;
+  font-size: 1.3em;
+}
+
+.each-product .details {
+  color: var(--white);
+}
+
+/* Each Product Details jsx */
+.product-detail .text {
+  background-color: var(--neutral);
+  height: 350px;
+}
+
+.product-detail .title {
+  color: var(--secondary);
+  font-weight: 700;
+}
+
+.product-detail .category {
+  color: var(--primary);
+  text-transform: uppercase;
+}
+
+.product-detail .price {
+  color: var(--secondary);
+  font-weight: 700;
+  font-size: 1.3em;
 }

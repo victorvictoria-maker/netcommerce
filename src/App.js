@@ -1,13 +1,13 @@
 import { RouterProvider, createBrowserRouter, createRoutesFromElements, Route } from "react-router-dom";
 import { StoreContextProvider } from './Contexts/StoreContext';
 import { HomeLayout } from "./Layouts/HomeLayout";
-import { Home } from "./Pages/Home";
+import { Home } from "./Pages/Home/Home";
 import { About } from "./Pages/About";
 import { Contact } from "./Pages/Contact";
 import { NotFound } from "./Pages/NotFound";
-import { Shop } from "./Pages/Shop";
+import { Shop } from "./Pages/Shop/Shop";
 import { QueryClient, QueryClientProvider } from "react-query";
-import { EachProductDetails } from "./Pages/EachProductDetails";
+import { EachProductDetails } from "./Pages/Shop/EachProductDetails";
 import { ProductsLayout } from "./Layouts/ProductsLayout";
 import { Cart } from "./Pages/Cart";
 import { Admin } from "./Pages/Admin/Admin";

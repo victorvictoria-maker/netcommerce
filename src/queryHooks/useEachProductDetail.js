@@ -4,7 +4,7 @@ import Axios from "axios";
 
 export const useGetEachProductDetails = (id) => {
     const getThisProduct = () => {
-        return Axios.get(`https://dummyjson.com/products/${id}`)
+        return Axios.get(`https://fakestoreapi.com/products/${id}`)
                     .then((res) => {
                         // console.log(res.data);
                         return res.data;

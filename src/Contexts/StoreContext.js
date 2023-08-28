@@ -9,7 +9,7 @@ const defaultCart = () => {
         return storedCart;
     } else {
         const cart = {};
-        for (let index = 1; index <= 30; index++) {
+        for (let index = 1; index <= 20; index++) {
             cart[index] = 0; 
         };
         return cart;
