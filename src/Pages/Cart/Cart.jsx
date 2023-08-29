@@ -3,6 +3,7 @@ import { StoreContext } from '../../Contexts/StoreContext.js';
 import { EachCartItem } from './EachCartItem.jsx';
 import { Link, useNavigate } from 'react-router-dom';
 import { IoArrowBack } from 'react-icons/io5';
+import { FeaturedProducts } from '../../Components/FeaturedProducts.jsx';
 
 export const Cart = () => {
 
@@ -18,7 +19,7 @@ export const Cart = () => {
         <div className="row">
             <div className="heading mb-4">
                 <h2>Your Cart</h2>
-                <h2>{cartItemsAmount} Items</h2>
+                <h4>{cartItemsAmount > 1 ? <span>{cartItemsAmount} Items</span> : <span>{cartItemsAmount} Item</span>}</h4>
             </div>
             <table className="table">
             <tbody>
@@ -45,7 +46,9 @@ export const Cart = () => {
             <p onClick={() => navigate('/products')}>
                 <Link className='link'  style={{ textDecoration: 'none', color: '#cc2936' }}> <IoArrowBack/> Continue Shopping </Link>
             </p>
-            {/* {totalCartAmount > 0 ? <p>Total: ${totalCartAmount.toFixed(2)}</p> : <p>Your cart is empty</p>}  */}
+        </div>
+        <div className="row mt-5 featuredproducts">
+            <FeaturedProducts/>
         </div>
     </div>
   )
