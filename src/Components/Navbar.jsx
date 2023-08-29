@@ -6,8 +6,8 @@ export const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg bg-light">
     <div className="container-fluid">
-      <span className='navbar-brand'>
-    <NavLink to='/' className='brand-name me-5' style={{ textDecoration: 'none' }}>
+      <span className='navbar-brand ms-lg-5 me-lg-5'>
+    <NavLink to='/' className='brand-name me-5' style={{ textDecoration: 'none', color: '#6667ab' }}>
           NetCommerce
     </NavLink>
         </span>

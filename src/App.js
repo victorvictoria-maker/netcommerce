@@ -9,7 +9,7 @@ import { Shop } from "./Pages/Shop/Shop";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { EachProductDetails } from "./Pages/Shop/EachProductDetails";
 import { ProductsLayout } from "./Layouts/ProductsLayout";
-import { Cart } from "./Pages/Cart";
+import { Cart } from "./Pages/Cart/Cart";
 import { Admin } from "./Pages/Admin/Admin";
 
 const queryClient = new QueryClient();

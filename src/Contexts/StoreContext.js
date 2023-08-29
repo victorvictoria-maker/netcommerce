@@ -93,7 +93,16 @@ export const StoreContextProvider = (props) => {
         // return totalAmount;
         return totalAmount;
     };
-    // console.log(cartItems);
+
+    const findAmountOfItem = () => {
+        let amountInCart = 0;
+        for (const item in cartItems) {
+            if (cartItems[item] > 0) {
+                amountInCart++;
+            };
+        };
+        return amountInCart;
+    };
 
     const removeFromCart = (productId) => {
         console.log(productId);
@@ -102,12 +111,27 @@ export const StoreContextProvider = (props) => {
         }); 
     };
 
+    const addOneToProduct = (productId) => {
+        setCartItems((prev) => {
+            return {...prev, [productId]: prev[productId]+1};
+        });
+    };
+
+    const removeOneFromProduct = (productId) => {
+        setCartItems((prev) => {
+            return {...prev, [productId]:prev[productId]-1};
+        });
+    };
+
     const storeContextValue = {
         allProduct, 
         cartItems, 
         addToCart, 
         findTotalCartCost, 
-        removeFromCart
+        findAmountOfItem,
+        removeFromCart,
+        addOneToProduct,
+        removeOneFromProduct
     };
 
     return  <StoreContext.Provider value={storeContextValue}>

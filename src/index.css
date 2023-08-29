@@ -64,7 +64,8 @@ body {
   border-bottom: 2px solid var(--primary);
 }
 
-.cart {
+.cart,
+.cart:hover {
   color: var(--secondary);
 }
 
@@ -124,4 +125,58 @@ body {
   color: var(--secondary);
   font-weight: 700;
   font-size: 1.3em;
+}
+
+/* Cart jsx */
+.heading {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--black);
+}
+
+.table .cart-row:hover {
+  background-color: var(--primary);
+  color: var(--neutral);
+}
+
+/* .table .cart-row .addToCart { */
+  /* display: flex; */
+/* } */
+
+.table .cart-row td {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.table .cart-row .delete {
+  color: var(--secondary);
+  font-weight: bold;
+  font-size: 1.4em;
+}
+
+.table .cart-row .title {
+  font-size: 1.2em;
+}
+
+.table .cart-row .price {
+  font-size: 0.8em;
+}
+
+.table .cart-row .btn {
+  background-color: var(--neutral);
+}
+
+.table .cart-row .totalPrice {
+  color: var(--secondary);
+  font-size: 1.1em;
+}
+
+.table .link {
+  /* color: red; */
+}
+
+@media screen and (max-width: 1000px){
+  .table .cart-row .title {
+    font-size: 0.7em;
+  }
 }
