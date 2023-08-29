@@ -166,6 +166,10 @@ body {
   background-color: var(--neutral);
 }
 
+.table .cart-row .btn:hover {
+  color: var(--black);
+}
+
 .table .cart-row .totalPrice {
   color: var(--secondary);
   font-size: 1.1em;

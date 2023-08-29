@@ -1,8 +1,32 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
+import { StoreContext } from '../Contexts/StoreContext';
+import { useAllProductData} from "../queryHooks/useAllProducts";
 
 export const Navbar = () => {
+
+  const [searchItem, setSearchItem] = useState('');
+  const {allProduct, setAllProducts} = useContext(StoreContext);
+
+  const {data} = useAllProductData();
+
+  const searchProducts = (e) => {
+    const searchedWord = e.target.value.toLowerCase();
+    setSearchItem(searchedWord);
+
+    let result;
+    if(searchedWord.length > 0) {
+      result = allProduct.filter((product) => {
+        return product.title.toLowerCase().includes(searchItem);
+      });
+      setAllProducts(result);
+    } else {
+      setAllProducts(data);
+    };
+  };
+
+
   return (
     <nav className="navbar navbar-expand-lg bg-light">
     <div className="container-fluid">
@@ -28,13 +52,10 @@ export const Navbar = () => {
         <li className="nav-item">
             <NavLink className='nav-link' to='contact'>Contact</NavLink>
         </li>
-        {/* <li className="nav-item">
-            <NavLink className='nav-link' to='cart'>Cart </NavLink>
-        </li> */}
       </ul>
       <div className="d-flex" role="search">
-        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-        <button className="btn btn-outline-danger" type="submit">Search</button> 
+        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" onChange={searchProducts}/>
+        {/* <button className="btn btn-outline-danger" type="submit">Search</button>  */}
         {/* <span>come</span> */}
       </div>
       <span className='ms-3 me-lg-5'>

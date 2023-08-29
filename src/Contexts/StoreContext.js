@@ -125,6 +125,7 @@ export const StoreContextProvider = (props) => {
 
     const storeContextValue = {
         allProduct, 
+        setAllProducts,
         cartItems, 
         addToCart, 
         findTotalCartCost, 
