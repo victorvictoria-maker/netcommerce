@@ -49,9 +49,9 @@ export const Navbar = () => {
         <li className="nav-item">
             <NavLink className='nav-link' to='about'>About</NavLink>
         </li>
-        <li className="nav-item">
+        {/* <li className="nav-item">
             <NavLink className='nav-link' to='contact'>Contact</NavLink>
-        </li>
+        </li> */}
       </ul>
       <div className="d-flex" role="search">
         <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" onChange={searchProducts}/>

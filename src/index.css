@@ -184,3 +184,9 @@ body {
     font-size: 0.7em;
   }
 }
+
+/* footer jsx */
+.footer {
+  background-color: var(--neutral);
+  /* border-top: 2px solid var(--white); */
+}
