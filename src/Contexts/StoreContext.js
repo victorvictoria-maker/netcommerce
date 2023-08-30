@@ -24,7 +24,11 @@ export const StoreContextProvider = (props) => {
         setAllProducts(data);
     };
 
-    useAllProductData(onSuccess);
+    const onError = (error) => {
+        console.log('Eroor', error);
+    };
+
+    const { isLoading, isFetching, isError, error } = useAllProductData(onSuccess, onError);
 
     useEffect(() => {
         setAllProducts(allProduct);
@@ -87,6 +91,10 @@ export const StoreContextProvider = (props) => {
     };
 
     const storeContextValue = {
+        isLoading,
+        isFetching,
+        isError,
+        error,
         allProduct, 
         setAllProducts,
         cartItems, 

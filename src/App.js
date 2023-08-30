@@ -2,15 +2,13 @@ import { RouterProvider, createBrowserRouter, createRoutesFromElements, Route } 
 import { StoreContextProvider } from './Contexts/StoreContext';
 import { HomeLayout } from "./Layouts/HomeLayout";
 import { Home } from "./Pages/Home/Home";
-import { About } from "./Pages/About";
-import { Contact } from "./Pages/Contact";
+import { Documentation } from "./Pages/Documentation";
 import { NotFound } from "./Pages/NotFound";
 import { Shop } from "./Pages/Shop/Shop";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { EachProductDetails } from "./Pages/Shop/EachProductDetails";
 import { ProductsLayout } from "./Layouts/ProductsLayout";
 import { Cart } from "./Pages/Cart/Cart";
-import { Admin } from "./Pages/Admin/Admin";
 
 const queryClient = new QueryClient();
 
@@ -21,14 +19,9 @@ const router = createBrowserRouter(
       <Route path="/products" element={<ProductsLayout/>}>
         <Route index element={<Shop/>}/>
         <Route path=":id" element={<EachProductDetails/>}/>
-      </Route>
-      {/* <Route path="products" element={<Shop/>}>
-        <Route path=":id" element={<EachProductDetails/>}/>
-      </Route> */}
-      <Route path="about" element={<About/>}/>
-      <Route path="contact" element={<Contact/>}/>
+      </Route> 
+      <Route path="documentation" element={<Documentation/>}/>
       <Route path="cart" element={<Cart/>}/>
-      <Route path="admin" element={<Admin/>}/>
       <Route path="*" element={<NotFound/>}/>
     </Route>
   )

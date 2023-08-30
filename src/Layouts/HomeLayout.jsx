@@ -6,13 +6,13 @@ import { Footer } from '../Components/Footer'
 export const HomeLayout = () => {
   return (
     <div>
-        <header>
-            <Navbar/>
-        </header>
-        <main>
-          <Outlet/>
-        </main>
-        <Footer/>
+      <header>
+        <Navbar/>
+      </header>
+      <main>
+        <Outlet/>
+      </main>
+      <Footer/>
     </div>
   )
 }

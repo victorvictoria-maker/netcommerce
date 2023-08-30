@@ -1,17 +1,3 @@
-/* body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-} */
-
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
 
 :root {
@@ -27,12 +13,9 @@ body {
   padding: 0;
   font-family: 'Poppins';
   text-decoration: none;
-  /* background-color: var(--neutral); */
-  /* background: var(--secondary); */
 }
 
 * {
-  /* color: #fff; */
   margin: 0;
 }
 
@@ -41,13 +24,8 @@ body {
   background-color: var(--neutral) !important;
   border-bottom: 2px solid var(--white);
   margin-bottom: 70px;
-  /* list-style-type: disc; */
 };
 
-/* .brand-name {
-  color: var(--secondary);
-  background-color: red;
-} */
 
 .nav-item {
   height: 35px;
@@ -75,7 +53,7 @@ body {
   text-transform: uppercase;
   font-size: 3.2em;
   border-bottom: none;
-  line-height: 45px;
+  line-height: 50px;
 }
 
 .landingpart .title {
@@ -172,9 +150,6 @@ body {
   color: var(--neutral);
 }
 
-/* .table .cart-row .addToCart { */
-  /* display: flex; */
-/* } */
 
 .table .cart-row td {
   text-align: center;
@@ -208,8 +183,11 @@ body {
   font-size: 1.1em;
 }
 
-.table .link {
-  /* color: red; */
+@media screen and (max-width: 480px){
+  .cart-row .addToCart {
+    display: flex;
+    flex-direction: column;
+  } 
 }
 
 @media screen and (max-width: 1000px){
@@ -221,13 +199,12 @@ body {
 /* footer jsx */
 .footer {
   background-color: var(--neutral);
-  /* border-top: 2px solid var(--white); */
+
 }
 
 
-
 /* featured products jsx */
-.fproductswrap {
+.featuredproducts {
   border-top: 1px solid var(--black);
 }
 
@@ -242,4 +219,23 @@ body {
 
 .fproducts:hover {
   transform: scale(0.8);
+}
+
+/* about brand jsx */
+.aboutbrand {
+  background-color: var(--neutral);
+}
+
+.aboutbrand .card {
+  border: 2px solid var(--primary);
+  transition: transform 0.3s ease-in-out; 
+}
+
+.aboutbrand .card:hover {
+  transform: scale(0.8);
+}
+
+.aboutbrand .card-title {
+  color: var(--secondary);
+  font-weight: bold;
 }

@@ -22,21 +22,20 @@ export const Cart = () => {
                 <h4>{cartItemsAmount > 1 ? <span>{cartItemsAmount} Items</span> : <span>{cartItemsAmount} Item</span>}</h4>
             </div>
             <table className="table">
-            <tbody>
-                {allProduct.map((product, key) => {
-                if(cartItems[product.id] !== 0) {
-                return (
-                    <EachCartItem 
-                        key={key} 
-                        product={product} 
-                        cartItems={cartItems}
-                    />
-                );
-            };
-            })}
-            </tbody>
+                <tbody>
+                    {allProduct.map((product, key) => {
+                        if(cartItems[product.id] !== 0) {
+                            return (
+                                <EachCartItem 
+                                    key={key} 
+                                    product={product} 
+                                    cartItems={cartItems}
+                                />
+                            );
+                        };
+                    })}
+                </tbody>
             </table>
-            {/*  */}
         </div>
         <div className="row fw-bold">
             {

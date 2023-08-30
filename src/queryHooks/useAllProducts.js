@@ -12,10 +12,11 @@ const getAllProducts = () => {
     });
 };
 
-export const useAllProductData = (onSuccess) => {
+export const useAllProductData = (onSuccess, onError) => {
     return useQuery(['all-products-query'], getAllProducts, {
         onSuccess,
-        refetchOnWindowFocus: false,
+        onError,
+        refetchOnWindowFocus: true,
         refetchOnMount: false,
     });
 };

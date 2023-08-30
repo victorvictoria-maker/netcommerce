@@ -7,14 +7,10 @@ export const FeaturedProducts = () => {
     const navigate = useNavigate();
 
     const {allProduct} = useContext(StoreContext);
-    console.log(allProduct);
+    // console.log(allProduct);
 
     function getRandomItemsFromArray(array, count) {
-        // if (count > array.length) {
-        //   throw new Error("Count is greater than array length");
-        // }
-      
-        const shuffledArray = array.slice(); // Create a copy of the array
+        const shuffledArray = array.slice(); 
         for (let i = shuffledArray.length - 1; i > 0; i--) {
           const j = Math.floor(Math.random() * (i + 1));
           [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
@@ -25,12 +21,12 @@ export const FeaturedProducts = () => {
       
       
       const randomItems = getRandomItemsFromArray(allProduct, 4);
-      console.log(randomItems);
+    //   console.log(randomItems);
       
 
   return (
     <div>
-        <div className="container-fluid fproductswrap">
+        <div className="container-fluid">
         <h4 className='text-center alsolike mt-3 pt-4 mb-4'>YOU MAY ALSO LIKE</h4>
             <div className="row">
                 {randomItems?.map((product, key) => {
