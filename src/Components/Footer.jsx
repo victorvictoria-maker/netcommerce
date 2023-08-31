@@ -46,7 +46,7 @@ export const Footer = () => {
         <hr/>
         <div className="row">
           <div className="col-12">
-            <p className="text-center" style={{ color: '#6667ab'}}>&copy; 2023 NetCommerce Store. Developed by Victoria Victor.</p>
+            <p className="text-center" style={{ color: '#6667ab'}}>&copy; 2023 NetCommerce Store. <a href="https://www.linkedin.com/in/victoria-victor-b3174b227/">Developed by Victoria Victor</a>.</p>
           </div>
         </div>
       </div>
