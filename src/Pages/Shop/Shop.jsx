@@ -5,51 +5,28 @@ import { ProductSummary } from "../../Components/ProductSummary.jsx";
 export const Shop = () => {
 
   const { allProduct, isLoading, isFetching, isError, error,} = useContext(StoreContext);
-  // const [loadingData, setLoadingData] = useState(false);
+  const [loadingData, setLoadingData] = useState(isLoading);
 
-  // useEffect(() => {
-    // if(isLoading) {
-    //   // console.log('Loading');
-    //   setLoadingData(true);
-    //   console.log(loadingData, 'loading');
-    // };
+  useEffect(() => {
+    if (!isLoading || !isFetching) {
+      setLoadingData(false);
+    };
+  }, []);
 
-    // if(!isLoading) {
-    //   setLoadingData(false);
-    //   console.log(loadingData,'done loading');
-    // }
+  if (isLoading || isFetching) {
+    return (
+      <div className="d-flex justify-content-center align-items-center vh-100 vw-100 position-fixed top-0 start-0 bg-white opacity-95">
+        <div className="spinner-border text-primary" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </div>
+    </div>
+    );
+  };
 
-
-    // } else {
-    //   setLoadingData(false);
-    //   console.log(loadingData, 'done loading');
-    // };
-  // }, []);
-
-  // if(isLoading) {
-    // console.log('Products loading');
-    // setLoadingData(true);
-    // console.log(loadingData);
-    // return <div className="d-flex justify-content-center align-items-center vh-100 vw-100 position-fixed top-0 start-0 bg-white opacity-75">
-    //     <div className="spinner-border text-primary" role="status">
-    //       <span className="visually-hidden">Loading...</span>
-    //     </div>
-    //   </div>
-  // } else {
-    // setLoadingData(false);
-    // console.log(loadingData);
-  // };
-
-  // if(isFetching) {
-  //   console.log('Products fetching');
-  // } else {
-  //   console.log('Products are already fetched');
-  // };
 
   if(isError) {
     console.log(error.message);
   };
-  // console.log(allProduct);
 
   return (
     <div className="container">
