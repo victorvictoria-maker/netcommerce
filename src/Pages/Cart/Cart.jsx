@@ -19,7 +19,9 @@ export const Cart = () => {
         <div className="row">
             <div className="heading mb-4">
                 <h2>Your Cart</h2>
-                <h4>{cartItemsAmount > 1 ? <span>{cartItemsAmount} Items</span> : <span>{cartItemsAmount} Item</span>}</h4>
+                {cartItemsAmount !== 0 &&
+                    <h4>{cartItemsAmount > 1 ? <span>{cartItemsAmount} Items</span> : <span>{cartItemsAmount} Item</span>}</h4>
+                }
             </div>
             <table className="table">
                 <tbody>
